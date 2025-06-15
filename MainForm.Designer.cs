@@ -30,6 +30,13 @@
         {
             listBox1 = new ListBox();
             button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            pictureBox1 = new PictureBox();
+            button5 = new Button();
+            button6 = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // listBox1
@@ -44,7 +51,8 @@
             // 
             // button1
             // 
-            button1.Location = new Point(233, 12);
+            button1.Enabled = false;
+            button1.Location = new Point(233, 146);
             button1.Name = "button1";
             button1.Size = new Size(108, 23);
             button1.TabIndex = 1;
@@ -52,15 +60,86 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // button2
+            // 
+            button2.Enabled = false;
+            button2.Location = new Point(233, 175);
+            button2.Name = "button2";
+            button2.Size = new Size(108, 23);
+            button2.TabIndex = 2;
+            button2.Text = "Registry Entries";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.Enabled = false;
+            button3.Location = new Point(233, 204);
+            button3.Name = "button3";
+            button3.Size = new Size(108, 23);
+            button3.TabIndex = 3;
+            button3.Text = "Launch Editor";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
+            // button4
+            // 
+            button4.Enabled = false;
+            button4.Location = new Point(347, 146);
+            button4.Name = "button4";
+            button4.Size = new Size(108, 23);
+            button4.TabIndex = 4;
+            button4.Text = "Game Fix";
+            button4.UseVisualStyleBackColor = true;
+            button4.Visible = false;
+            button4.Click += button4_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(233, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(512, 128);
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(347, 204);
+            button5.Name = "button5";
+            button5.Size = new Size(108, 23);
+            button5.TabIndex = 6;
+            button5.Text = "Editor Fix";
+            button5.UseVisualStyleBackColor = true;
+            button5.Visible = false;
+            button5.Click += button5_Click;
+            // 
+            // button6
+            // 
+            button6.Enabled = false;
+            button6.Location = new Point(233, 233);
+            button6.Name = "button6";
+            button6.Size = new Size(108, 23);
+            button6.TabIndex = 7;
+            button6.Text = "Suggested Mods";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(757, 450);
+            Controls.Add(button6);
+            Controls.Add(button5);
+            Controls.Add(pictureBox1);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(listBox1);
             Name = "MainForm";
-            Text = "MainForm";
+            Text = "Quick Tick";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -68,5 +147,11 @@
 
         private ListBox listBox1;
         private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private PictureBox pictureBox1;
+        private Button button5;
+        private Button button6;
     }
 }
