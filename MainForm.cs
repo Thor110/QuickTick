@@ -123,7 +123,8 @@ namespace QuickTick
         private void button6_Click(object sender, EventArgs e) { newForm(new ModsForm(IniPath)); }
         private void button7_Click(object sender, EventArgs e)
         {
-            string iniPath = Path.Combine(InstallLocation, GameINI);
+            //string iniPath = GameINI.Contains(":") ? Path.Combine(InstallLocation, GameINI) : GameINI;
+            string iniPath = GameINI.Contains(":") ? GameINI : Path.Combine(InstallLocation, GameINI);
             if (File.Exists(iniPath)) { launchProcess(iniPath); }
             else { MessageBox.Show("Game INI file not found."); }
         }
