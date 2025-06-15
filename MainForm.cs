@@ -15,28 +15,27 @@ namespace QuickTick
         private string EditorFixSite = string.Empty;
         private string InstallLocation = string.Empty;
         private string GameINI = string.Empty;
-        private static readonly IniFile MyIni = new IniFile("games.ini");
         public MainForm()
         {
             InitializeComponent();
-            if (!File.Exists("games.ini")) { MessageBox.Show("games.ini" + " is missing."); Close(); }
-            for (int i = 0; i < 1000; i++)
-            {
-                string entry = "Game" + i.ToString();
-                if (MyIni.KeyExists(entry, "QuickTick"))
-                {
-                    string name = MyIni.Read(entry, "QuickTick");
-                    if (!File.Exists($"{name}")) { MessageBox.Show($"{name}" + " is missing."); }
-                    else
-                    {
-                        string game = new IniFile($"{name}").Read("Name", "Game");
-                        listBox1.Items.Add(game);
-                        entries.Add(new Games { Name = game, Path = name });
-                    }
-                }
-                else { break; } // No more games to read
-            }
+            detectEntries();
             pictureBox1.ImageLocation = "quicktick.png";
+        }
+        public void detectEntries()
+        {
+            string iniDirectory = Path.Combine(Application.StartupPath, "INIs");
+            if (!Directory.Exists(iniDirectory)) { Directory.CreateDirectory(iniDirectory); return; }
+            string[] iniFiles = Directory.GetFiles(iniDirectory, "*.ini", SearchOption.TopDirectoryOnly);
+            const int MAX_LISTBOX_ENTRIES = 1000;
+            foreach (var iniFile in iniFiles.Take(MAX_LISTBOX_ENTRIES))
+            {
+                IniFile file = new IniFile(iniFile);
+                string game = file.Read("Name", "Game");
+                string test = Path.GetFileNameWithoutExtension(iniFile);
+                string name = string.IsNullOrWhiteSpace(game) ? test : game;
+                listBox1.Items.Add(string.IsNullOrWhiteSpace(name) ? test : name);
+                entries.Add(new Games { Name = name, Path = iniFile });
+            }
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -50,6 +49,7 @@ namespace QuickTick
                     ExecutablePath = iniFile.Read("Executable", "Game");
                     EditorPath = iniFile.Read("Editor", "Game");
                     BannerPath = iniFile.Read("Banner", "Game");
+                    BannerPath = Path.Combine("INIs", BannerPath);
                     InstallLocation = iniFile.Read("InstallLocation", "Game");
                     GameINI = iniFile.Read("GameINI", "Game");
                     // Button Activation
