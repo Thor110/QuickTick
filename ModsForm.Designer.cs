@@ -82,8 +82,10 @@
             Controls.Add(richTextBox1);
             Controls.Add(button1);
             Controls.Add(listBox1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "ModsForm";
-            Text = "ModsForm";
+            Text = "Mod List";
             ResumeLayout(false);
             PerformLayout();
         }

@@ -150,6 +150,8 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(listBox1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "MainForm";
             Text = "Quick Tick";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

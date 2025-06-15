@@ -131,8 +131,10 @@
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(listBox1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             Name = "RegistryEditor";
-            Text = "RegistryEditor";
+            Text = "Registry Editor";
             FormClosing += RegistryEditor_FormClosing;
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);

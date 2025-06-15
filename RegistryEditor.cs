@@ -13,6 +13,7 @@ namespace QuickTick
             InitializeComponent();
             iniFile = new IniFile($"{path}");
             string RegistryRoot = iniFile.Read("RegistryRoot", "Game");
+            
             PopulateRegistryTree(RegistryRoot);
         }
         private static (RegistryHive hive, string subKey) ParseRegistryPath(string registryPath)
