@@ -36,6 +36,8 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            numericUpDown1 = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // listBox1
@@ -107,11 +109,20 @@
             label4.TabIndex = 7;
             label4.Text = "Registry entry editing is recommended for advanced users only!";
             // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(497, 106);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(111, 23);
+            numericUpDown1.TabIndex = 8;
+            numericUpDown1.Visible = false;
+            // 
             // RegistryEditor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(numericUpDown1);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -122,6 +133,8 @@
             Controls.Add(listBox1);
             Name = "RegistryEditor";
             Text = "RegistryEditor";
+            FormClosing += RegistryEditor_FormClosing;
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -136,5 +149,6 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private NumericUpDown numericUpDown1;
     }
 }
