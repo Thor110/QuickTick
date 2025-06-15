@@ -31,6 +31,7 @@
             listBox1 = new ListBox();
             button1 = new Button();
             richTextBox1 = new RichTextBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // listBox1
@@ -59,21 +60,32 @@
             richTextBox1.Location = new Point(298, 41);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
-            richTextBox1.Size = new Size(490, 160);
+            richTextBox1.Size = new Size(517, 160);
             richTextBox1.TabIndex = 2;
             richTextBox1.Text = "";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(298, 204);
+            label1.Name = "label1";
+            label1.Size = new Size(523, 15);
+            label1.TabIndex = 3;
+            label1.Text = "Do not use more than one mod unless instructed to do so by the mod or you know they will work.";
             // 
             // ModsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(827, 450);
+            Controls.Add(label1);
             Controls.Add(richTextBox1);
             Controls.Add(button1);
             Controls.Add(listBox1);
             Name = "ModsForm";
             Text = "ModsForm";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -81,5 +93,6 @@
         private ListBox listBox1;
         private Button button1;
         private RichTextBox richTextBox1;
+        private Label label1;
     }
 }

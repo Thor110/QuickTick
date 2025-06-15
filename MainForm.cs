@@ -1,5 +1,6 @@
 ﻿using IniParser;
 using System.Diagnostics;
+using System.IO;
 
 namespace QuickTick
 {
@@ -14,6 +15,7 @@ namespace QuickTick
         private string RecommendedFixSite = string.Empty;
         private string EditorFixSite = string.Empty;
         private string InstallLocation = string.Empty;
+        private string GameINI = string.Empty;
         private static readonly IniFile MyIni = new IniFile("games.ini");
         public MainForm()
         {
@@ -51,10 +53,12 @@ namespace QuickTick
                     RegistryPath = iniFile.Read("RegistryRoot", "Game");
                     BannerPath = iniFile.Read("Banner", "Game");
                     InstallLocation = iniFile.Read("InstallLocation", "Game");
+                    GameINI = iniFile.Read("GameINI", "Game");
                     // Button Activation
                     button1.Enabled = !string.IsNullOrWhiteSpace(ExecutablePath) || !string.IsNullOrWhiteSpace(iniFile.Read("SteamID", "Game"));
                     button2.Enabled = !string.IsNullOrWhiteSpace(RegistryPath);
                     button3.Enabled = !string.IsNullOrWhiteSpace(EditorPath);
+                    button7.Enabled = !string.IsNullOrWhiteSpace(GameINI);
                     // Picture Display
                     pictureBox1.ImageLocation = !string.IsNullOrWhiteSpace(BannerPath) && File.Exists(BannerPath) ? BannerPath : null;
                     // Recommended Fix
@@ -84,7 +88,7 @@ namespace QuickTick
                     {
                         button5.Enabled = false;
                         button5.Visible = false;
-                        if(!string.IsNullOrWhiteSpace(EditorFix)) { EditorPath = EditorFix; }
+                        if (!string.IsNullOrWhiteSpace(EditorFix)) { EditorPath = EditorFix; }
                     }
                     // Mods
                     if (iniFile.KeyExists("Mod0" + "Name", "Mods")) { button6.Enabled = true; break; }
@@ -102,12 +106,6 @@ namespace QuickTick
             form.FormClosed += (s, args) => this.Show();
             form.Move += (s, args) => { if (this.Location != form.Location) { this.Location = form.Location; } };
         }
-        private void button1_Click(object sender, EventArgs e) { startProcess("Game", ExecutablePath); Close(); }
-        private void button2_Click(object sender, EventArgs e) { newForm(new RegistryEditor()); }
-        private void button3_Click(object sender, EventArgs e) { startProcess("Editor", EditorPath); Close(); }
-        private void button4_Click(object sender, EventArgs e) { launchProcess(RecommendedFixSite); }
-        private void button5_Click(object sender, EventArgs e) { launchProcess(EditorFixSite); }
-        private void button6_Click(object sender, EventArgs e) { newForm(new ModsForm(IniPath)); }
         private void startProcess(string process, string executable)
         {
             string path = Path.Combine(InstallLocation, executable);
@@ -115,12 +113,24 @@ namespace QuickTick
             // Steam Support
             IniFile iniFile = new IniFile($"{IniPath}");
             string SteamID = iniFile.Read("SteamID", "Game");
-            if (File.Exists(Path.Combine(InstallLocation, "steam_api.dll")) && !string.IsNullOrWhiteSpace(SteamID) && process == "Game")
+            if (!string.IsNullOrWhiteSpace(SteamID) && process == "Game")
             {
                 launchProcess($"steam://rungameid/{SteamID}");
             }
             else { launchProcess(path); }
         }
         private void launchProcess(string process) { Process.Start(new ProcessStartInfo(process) { UseShellExecute = true }); }
+        private void button1_Click(object sender, EventArgs e) { startProcess("Game", ExecutablePath); Close(); }
+        private void button2_Click(object sender, EventArgs e) { newForm(new RegistryEditor()); }
+        private void button3_Click(object sender, EventArgs e) { startProcess("Editor", EditorPath); Close(); }
+        private void button4_Click(object sender, EventArgs e) { launchProcess(RecommendedFixSite); }
+        private void button5_Click(object sender, EventArgs e) { launchProcess(EditorFixSite); }
+        private void button6_Click(object sender, EventArgs e) { newForm(new ModsForm(IniPath)); }
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string iniPath = Path.Combine(InstallLocation, GameINI);
+            if (File.Exists(iniPath)) { launchProcess(iniPath); }
+            else { MessageBox.Show("Game INI file not found."); }
+        }
     }
 }

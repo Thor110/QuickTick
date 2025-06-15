@@ -36,6 +36,7 @@
             pictureBox1 = new PictureBox();
             button5 = new Button();
             button6 = new Button();
+            button7 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -124,11 +125,23 @@
             button6.UseVisualStyleBackColor = true;
             button6.Click += button6_Click;
             // 
+            // button7
+            // 
+            button7.Enabled = false;
+            button7.Location = new Point(456, 175);
+            button7.Name = "button7";
+            button7.Size = new Size(108, 23);
+            button7.TabIndex = 8;
+            button7.Text = "Game INI";
+            button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(868, 450);
+            Controls.Add(button7);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(pictureBox1);
@@ -153,5 +166,6 @@
         private PictureBox pictureBox1;
         private Button button5;
         private Button button6;
+        private Button button7;
     }
 }
