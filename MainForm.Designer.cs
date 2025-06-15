@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             listBox1 = new ListBox();
             button1 = new Button();
             button2 = new Button();
@@ -97,6 +98,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
             pictureBox1.Location = new Point(342, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(512, 128);
@@ -151,6 +153,7 @@
             Controls.Add(button1);
             Controls.Add(listBox1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "MainForm";
             Text = "Quick Tick";

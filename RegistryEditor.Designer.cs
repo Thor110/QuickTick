@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistryEditor));
             listBox1 = new ListBox();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
@@ -132,6 +133,7 @@
             Controls.Add(textBox1);
             Controls.Add(listBox1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "RegistryEditor";
             Text = "Registry Editor";

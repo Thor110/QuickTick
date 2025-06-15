@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModsForm));
             listBox1 = new ListBox();
             button1 = new Button();
             richTextBox1 = new RichTextBox();
@@ -83,6 +84,7 @@
             Controls.Add(button1);
             Controls.Add(listBox1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "ModsForm";
             Text = "Mod List";

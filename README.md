@@ -13,3 +13,7 @@ A program designed for curating patches, fixes and enhancements for games.
 
 ## How It Works
 Place .ini files in the /INIs/ folder. Each .ini defines one game configuration. The program will auto-detect and display all valid entries. ( up to 1000 entries )
+
+## Icon
+
+<a href="https://www.flaticon.com/free-icons/ini" title="ini icons">Ini icons created by Shuvo.Das - Flaticon</a>

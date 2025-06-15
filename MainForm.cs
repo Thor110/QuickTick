@@ -19,7 +19,6 @@ namespace QuickTick
         {
             InitializeComponent();
             detectEntries();
-            pictureBox1.ImageLocation = "quicktick.png";
         }
         public void detectEntries()
         {
