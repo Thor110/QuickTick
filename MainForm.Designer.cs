@@ -45,14 +45,14 @@
             listBox1.ItemHeight = 15;
             listBox1.Location = new Point(12, 12);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(215, 424);
+            listBox1.Size = new Size(324, 424);
             listBox1.TabIndex = 0;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // button1
             // 
             button1.Enabled = false;
-            button1.Location = new Point(233, 146);
+            button1.Location = new Point(342, 146);
             button1.Name = "button1";
             button1.Size = new Size(108, 23);
             button1.TabIndex = 1;
@@ -63,7 +63,7 @@
             // button2
             // 
             button2.Enabled = false;
-            button2.Location = new Point(233, 175);
+            button2.Location = new Point(342, 175);
             button2.Name = "button2";
             button2.Size = new Size(108, 23);
             button2.TabIndex = 2;
@@ -74,7 +74,7 @@
             // button3
             // 
             button3.Enabled = false;
-            button3.Location = new Point(233, 204);
+            button3.Location = new Point(342, 204);
             button3.Name = "button3";
             button3.Size = new Size(108, 23);
             button3.TabIndex = 3;
@@ -85,7 +85,7 @@
             // button4
             // 
             button4.Enabled = false;
-            button4.Location = new Point(347, 146);
+            button4.Location = new Point(456, 146);
             button4.Name = "button4";
             button4.Size = new Size(108, 23);
             button4.TabIndex = 4;
@@ -96,7 +96,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(233, 12);
+            pictureBox1.Location = new Point(342, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(512, 128);
             pictureBox1.TabIndex = 5;
@@ -104,7 +104,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(347, 204);
+            button5.Location = new Point(456, 204);
             button5.Name = "button5";
             button5.Size = new Size(108, 23);
             button5.TabIndex = 6;
@@ -116,7 +116,7 @@
             // button6
             // 
             button6.Enabled = false;
-            button6.Location = new Point(233, 233);
+            button6.Location = new Point(342, 233);
             button6.Name = "button6";
             button6.Size = new Size(108, 23);
             button6.TabIndex = 7;
@@ -128,7 +128,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(757, 450);
+            ClientSize = new Size(868, 450);
             Controls.Add(button6);
             Controls.Add(button5);
             Controls.Add(pictureBox1);
