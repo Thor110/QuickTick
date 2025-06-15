@@ -11,7 +11,6 @@ namespace QuickTick
         public string IniPath = string.Empty;
         private string EditorPath = string.Empty;
         private string BannerPath = string.Empty;
-        private string RegistryPath = string.Empty;
         private string RecommendedFixSite = string.Empty;
         private string EditorFixSite = string.Empty;
         private string InstallLocation = string.Empty;
@@ -50,13 +49,12 @@ namespace QuickTick
                     IniFile iniFile = new IniFile($"{IniPath}");
                     ExecutablePath = iniFile.Read("Executable", "Game");
                     EditorPath = iniFile.Read("Editor", "Game");
-                    RegistryPath = iniFile.Read("RegistryRoot", "Game");
                     BannerPath = iniFile.Read("Banner", "Game");
                     InstallLocation = iniFile.Read("InstallLocation", "Game");
                     GameINI = iniFile.Read("GameINI", "Game");
                     // Button Activation
                     button1.Enabled = !string.IsNullOrWhiteSpace(ExecutablePath) || !string.IsNullOrWhiteSpace(iniFile.Read("SteamID", "Game"));
-                    button2.Enabled = !string.IsNullOrWhiteSpace(RegistryPath);
+                    button2.Enabled = !string.IsNullOrWhiteSpace(iniFile.Read("RegistryRoot", "Game"));
                     button3.Enabled = !string.IsNullOrWhiteSpace(EditorPath);
                     button7.Enabled = !string.IsNullOrWhiteSpace(GameINI);
                     // Picture Display
@@ -109,19 +107,16 @@ namespace QuickTick
         private void startProcess(string process, string executable)
         {
             string path = Path.Combine(InstallLocation, executable);
-            if (!File.Exists(path)) { MessageBox.Show(process + " " + "Executable" + " not found. Please check the path in the ini file."); return; }
             // Steam Support
             IniFile iniFile = new IniFile($"{IniPath}");
             string SteamID = iniFile.Read("SteamID", "Game");
-            if (!string.IsNullOrWhiteSpace(SteamID) && process == "Game")
-            {
-                launchProcess($"steam://rungameid/{SteamID}");
-            }
-            else { launchProcess(path); }
+            if (!string.IsNullOrWhiteSpace(SteamID) && process == "Game") { launchProcess($"steam://rungameid/{SteamID}"); return; }
+            if (!File.Exists(path)) { MessageBox.Show(process + " " + "Executable" + " not found. Please check the path in the ini file."); return; }
+            launchProcess(path);
         }
         private void launchProcess(string process) { Process.Start(new ProcessStartInfo(process) { UseShellExecute = true }); }
         private void button1_Click(object sender, EventArgs e) { startProcess("Game", ExecutablePath); Close(); }
-        private void button2_Click(object sender, EventArgs e) { newForm(new RegistryEditor()); }
+        private void button2_Click(object sender, EventArgs e) { newForm(new RegistryEditor(IniPath)); }
         private void button3_Click(object sender, EventArgs e) { startProcess("Editor", EditorPath); Close(); }
         private void button4_Click(object sender, EventArgs e) { launchProcess(RecommendedFixSite); }
         private void button5_Click(object sender, EventArgs e) { launchProcess(EditorFixSite); }

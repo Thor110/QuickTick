@@ -6,10 +6,10 @@ namespace QuickTick
     public partial class ModsForm : Form
     {
         private IniFile iniFile;
-        public ModsForm(string mod)
+        public ModsForm(string path)
         {
             InitializeComponent();
-            iniFile = new IniFile($"{mod}");
+            iniFile = new IniFile($"{path}");
             for (int i = 0; i < 1000; i++)
             {
                 string entry = "Mod" + i.ToString() + "Name";
