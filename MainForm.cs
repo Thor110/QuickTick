@@ -25,8 +25,7 @@ namespace QuickTick
             string iniDirectory = Path.Combine(Application.StartupPath, "INIs");
             if (!Directory.Exists(iniDirectory)) { Directory.CreateDirectory(iniDirectory); return; }
             string[] iniFiles = Directory.GetFiles(iniDirectory, "*.ini", SearchOption.TopDirectoryOnly);
-            const int MAX_LISTBOX_ENTRIES = 1000;
-            foreach (var iniFile in iniFiles.Take(MAX_LISTBOX_ENTRIES))
+            foreach (var iniFile in iniFiles.Take(65535))
             {
                 IniFile file = new IniFile(iniFile);
                 string game = file.Read("Name", "Game");
